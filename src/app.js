@@ -48,12 +48,6 @@ class App {
     elementSelectedToBeDeleted.remove();
   }
 }
-
-function start() {
-  let initialize = new App();
-  initialize.getInputValues();
-}
-
 function deleteElementFromList(event) {
   let deleteELement = new App();
   deleteELement.removeElement(event);
