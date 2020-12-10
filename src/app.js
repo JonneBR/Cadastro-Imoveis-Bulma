@@ -14,9 +14,18 @@ class App {
     console.log(totalArea);
     console.log(isImovelAvailable.value);
   }
+  removeElement(event) {
+    let elementSelectedToBeDeleted = event.parentElement.parentElement;
+    elementSelectedToBeDeleted.remove();
+  }
 }
 
 function start() {
   let initialize = new App();
   initialize.getInputValues();
+}
+
+function deleteElementFromList(event) {
+  let deleteELement = new App();
+  deleteELement.removeElement(event);
 }
