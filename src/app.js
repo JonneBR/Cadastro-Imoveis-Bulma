@@ -5,15 +5,32 @@ class App {
     this.situation = situation;
   }
   getInputValues() {
-    let imovelType = document.querySelector("input[name='imovel']:checked");
-    let totalArea = document.querySelector("input[name='area']").value;
-    let isImovelAvailable = document.querySelector(
+    this.imovel = document.querySelector("input[name='imovel']:checked").value;
+    this.area = document.querySelector("input[name='area']").value;
+    this.situation = document.querySelector(
       "input[name='available']:checked",
-    );
-    console.log(imovelType.value);
-    console.log(totalArea);
-    console.log(isImovelAvailable.value);
+    ).value;
+    this.addElement();
   }
+  addElement() {
+    const buttonAlugado = document.getElementById('alugado');
+    const buttonAlugadoClone = buttonAlugado.cloneNode(true);
+    const tbodyElement = document.getElementById('tbodyElement');
+    const formInput = [this.imovel, this.area, this.situation];
+    const newTrElement = document.createElement('tr');
+    formInput.forEach((value) => {
+      if (value == 'Alugado') {
+        newTrElement.appendChild(buttonAlugadoClone);
+      } else if (value == 'Disponivel') {
+        console.log('disponivel');
+      }
+      const newTdElement = document.createElement('td');
+      newTdElement.innerHTML = value;
+      newTrElement.appendChild(newTdElement);
+      tbodyElement.appendChild(newTrElement);
+    });
+  }
+
   removeElement(event) {
     let elementSelectedToBeDeleted = event.parentElement.parentElement;
     elementSelectedToBeDeleted.remove();
