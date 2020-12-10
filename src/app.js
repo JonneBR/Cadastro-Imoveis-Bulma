@@ -13,12 +13,13 @@ class App {
     this.addElement();
   }
   addElement() {
-    const buttonAlugado = document.getElementById('alugado');
-    const buttonAlugadoClone = buttonAlugado.cloneNode(true);
-    const buttonDisponivel = document.getElementById('disponivel');
-    const buttonDisponivelClone = buttonDisponivel.cloneNode(true);
-    const buttonDelete = document.getElementById('deleteElement');
-    const buttonDeleteClone = buttonDelete.cloneNode(true);
+    const tdRentStatus = document.createElement('td');
+    tdRentStatus.setAttribute('class', 'tag is-success is-medium');
+    tdRentStatus.textContent = 'Disponivel';
+
+    const buttonDelete2 = document.createElement('a');
+    buttonDelete2.setAttribute('class', 'delete tag is-danger');
+    buttonDelete2.setAttribute('onclick', 'deleteElementFromList(this)');
 
     const tbodyElement = document.getElementById('tbodyElement');
     const formInput = [this.imovel, this.area, this.situation];
@@ -27,13 +28,15 @@ class App {
     for (let i = 0; i < formInput.length; i++) {
       const newTdElement = document.createElement('td');
       if (formInput[i] == 'Alugado') {
-        newTrElement.appendChild(buttonAlugadoClone);
-        newTdElement.appendChild(buttonDeleteClone);
+        tdRentStatus.setAttribute('class', 'tag is-danger is-medium');
+        tdRentStatus.textContent = 'Alugado';
+        newTrElement.appendChild(tdRentStatus);
+        newTdElement.appendChild(buttonDelete2);
         newTrElement.appendChild(newTdElement);
         break;
       } else if (formInput[i] == 'Disponivel') {
-        newTrElement.appendChild(buttonDisponivelClone);
-        newTdElement.appendChild(buttonDeleteClone);
+        newTrElement.appendChild(tdRentStatus);
+        newTdElement.appendChild(buttonDelete2);
         newTrElement.appendChild(newTdElement);
         break;
       }
