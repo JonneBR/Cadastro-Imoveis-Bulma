@@ -1,3 +1,3 @@
-function registerNewImovel() {
-  console.log('clicado');
-}
+// function registerNewImovel() {
+//   console.log('clicado');
+// }

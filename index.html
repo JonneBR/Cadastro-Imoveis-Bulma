@@ -35,32 +35,32 @@
             Qual o tipo do imóvel?
           </label>
           <label class="radio">
-            <input type="radio" name="answer1">
+            <input type="radio" value="Casa" name="imovel">
             Casa
           </label>
           <label class="radio">
-            <input type="radio" name="answer1">
+            <input type="radio" value="Apartamento" name="imovel">
             Apartamento
           </label>
 
           <label class="label mt-5">
             Qual a área do imóvel?
-            <input class="input" type="text" placeholder="Área">
+            <input class="input" type="text" name="area" placeholder="Área">
           </label>
 
           <label class="label">
             O imóvel está alugado?
           </label>
           <label class="radio">
-            <input type="radio" name="answer2">
+            <input type="radio" value="Alugado" name="available">
             Sim
           </label>
           <label class="radio">
-            <input type="radio" name="answer2">
+            <input type="radio" value="Disponivel" name="available">
             Não
           </label>
           <div class="buttons is-centered">
-            <button onclick="registerNewImovel()" class="button is-primary ">Cadastrar</button>
+            <button onclick="start()" class="button is-primary ">Cadastrar</button>
           </div>
         </div>
       </div>
@@ -95,6 +95,7 @@
     </div>
   </section>
   <script src="/src/script.js"></script>
+  <script src="/src/app.js"></script>
 </body>
 
 </html>
