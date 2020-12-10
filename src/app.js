@@ -15,20 +15,32 @@ class App {
   addElement() {
     const buttonAlugado = document.getElementById('alugado');
     const buttonAlugadoClone = buttonAlugado.cloneNode(true);
+    const buttonDisponivel = document.getElementById('disponivel');
+    const buttonDisponivelClone = buttonDisponivel.cloneNode(true);
+    const buttonDelete = document.getElementById('deleteElement');
+    const buttonDeleteClone = buttonDelete.cloneNode(true);
+
     const tbodyElement = document.getElementById('tbodyElement');
     const formInput = [this.imovel, this.area, this.situation];
     const newTrElement = document.createElement('tr');
-    formInput.forEach((value) => {
-      if (value == 'Alugado') {
-        newTrElement.appendChild(buttonAlugadoClone);
-      } else if (value == 'Disponivel') {
-        console.log('disponivel');
-      }
+
+    for (let i = 0; i < formInput.length; i++) {
       const newTdElement = document.createElement('td');
-      newTdElement.innerHTML = value;
+      if (formInput[i] == 'Alugado') {
+        newTrElement.appendChild(buttonAlugadoClone);
+        newTdElement.appendChild(buttonDeleteClone);
+        newTrElement.appendChild(newTdElement);
+        break;
+      } else if (formInput[i] == 'Disponivel') {
+        newTrElement.appendChild(buttonDisponivelClone);
+        newTdElement.appendChild(buttonDeleteClone);
+        newTrElement.appendChild(newTdElement);
+        break;
+      }
+      newTdElement.innerHTML = formInput[i];
       newTrElement.appendChild(newTdElement);
       tbodyElement.appendChild(newTrElement);
-    });
+    }
   }
 
   removeElement(event) {
