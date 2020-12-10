@@ -60,7 +60,7 @@
             Não
           </label>
           <div class="buttons is-centered">
-            <button class="button is-primary ">Cadastrar</button>
+            <button onclick="registerNewImovel()" class="button is-primary ">Cadastrar</button>
           </div>
         </div>
       </div>
@@ -78,15 +78,23 @@
           </thead>
           <tbody>
             <td>Casa</td>
-            <td>52</td>
-            <td>Alugado</td>
+            <td>52 m2</td>
+            <td class="tag is-danger is-medium">Alugado</td>
+            <td><a class="delete tag is-danger"></a></td>
+          <tbody>
+            <td>Apartamento</td>
+            <td>100 m2</td>
+            <td class="tag is-success is-medium">Disponivel</td>
+            <td><a class="delete tag is-danger"></a></td>
+          </tbody>
+
           </tbody>
 
         </table>
       </div>
     </div>
   </section>
-
+  <script src="/src/script.js"></script>
 </body>
 
 </html>
