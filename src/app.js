@@ -19,17 +19,6 @@ class App {
 
     for (let i = 0; i < formInput.length - 1; i++) {
       const newTdElement = document.createElement('td');
-      // if (formInput[i] == 'Alugado') {
-      //   newTrElement.appendChild(this.rentStatus('danger', 'Alugado'));
-      //   newTdElement.appendChild(this.deleteElementBtn());
-      //   newTrElement.appendChild(newTdElement);
-      //   break;
-      // } else if (formInput[i] == 'Disponivel') {
-      //   newTrElement.appendChild(this.rentStatus('success', 'Disponivel'));
-      //   newTdElement.appendChild(this.deleteElementBtn());
-      //   newTrElement.appendChild(newTdElement);
-      //   break;
-      // }
       newTdElement.innerHTML = formInput[i];
       newTrElement.appendChild(newTdElement);
       tbodyElement.appendChild(newTrElement);
