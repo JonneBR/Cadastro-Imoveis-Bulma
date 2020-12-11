@@ -1,42 +1,32 @@
 class App {
-  constructor(imovel, area, situation) {
+  constructor(imovel, area, backgroundColor) {
     this.imovel = imovel;
     this.area = area;
-    this.situation = situation;
+    this.backgroundColor = backgroundColor;
   }
   getInputValues() {
     this.imovel = document.querySelector("input[name='imovel']:checked").value;
     this.area = document.querySelector("input[name='area']").value;
-    this.situation = document.querySelector(
+    this.backgroundColor = document.querySelector(
       "input[name='available']:checked",
     ).value;
     this.addElement();
   }
   addElement() {
-    const tdRentStatus = document.createElement('td');
-    tdRentStatus.setAttribute('class', 'tag is-success is-medium');
-    tdRentStatus.textContent = 'Disponivel';
-
-    const buttonDelete2 = document.createElement('a');
-    buttonDelete2.setAttribute('class', 'delete tag is-danger');
-    buttonDelete2.setAttribute('onclick', 'deleteElementFromList(this)');
-
     const tbodyElement = document.getElementById('tbodyElement');
-    const formInput = [this.imovel, this.area, this.situation];
+    const formInput = [this.imovel, this.area, this.backgroundColor];
     const newTrElement = document.createElement('tr');
 
     for (let i = 0; i < formInput.length; i++) {
       const newTdElement = document.createElement('td');
       if (formInput[i] == 'Alugado') {
-        tdRentStatus.setAttribute('class', 'tag is-danger is-medium');
-        tdRentStatus.textContent = 'Alugado';
-        newTrElement.appendChild(tdRentStatus);
-        newTdElement.appendChild(buttonDelete2);
+        newTrElement.appendChild(this.rentStatus('danger', 'Alugado'));
+        newTdElement.appendChild(this.deleteElementBtn());
         newTrElement.appendChild(newTdElement);
         break;
       } else if (formInput[i] == 'Disponivel') {
-        newTrElement.appendChild(tdRentStatus);
-        newTdElement.appendChild(buttonDelete2);
+        newTrElement.appendChild(this.rentStatus('success', 'Disponivel'));
+        newTdElement.appendChild(this.deleteElementBtn());
         newTrElement.appendChild(newTdElement);
         break;
       }
@@ -44,6 +34,24 @@ class App {
       newTrElement.appendChild(newTdElement);
       tbodyElement.appendChild(newTrElement);
     }
+  }
+
+  rentStatus(backgroundColor, rentSituation) {
+    const tdRentStatus = document.createElement('td');
+    tdRentStatus.setAttribute(
+      'class',
+      'tag is-' + backgroundColor + ' is-medium',
+    );
+    tdRentStatus.textContent = rentSituation;
+    console.log(tdRentStatus);
+    return tdRentStatus;
+  }
+
+  deleteElementBtn() {
+    const buttonDelete = document.createElement('a');
+    buttonDelete.setAttribute('class', 'delete tag is-danger');
+    buttonDelete.setAttribute('onclick', 'deleteElementFromList(this)');
+    return buttonDelete;
   }
 
   removeElement(event) {
